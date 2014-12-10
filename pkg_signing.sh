@@ -8,5 +8,5 @@ fi
 
 #Package signing
 #Run as gluster packager
-find ${path} -type f | grep '\.rpm' | grep -v 'epel-5' | xargs rpmsign --addsign
+find ${path} -type f | grep '\.rpm' | grep -v 'el5' | xargs rpmsign --addsign
 

@@ -13,7 +13,7 @@ if ! `whoami | grep root >/dev/null 2>&1`;then
 	exit 1
 fi
 
-for path in $(find ${repo_path} -type d | grep 'x86_64\|i386\|noarch\|armhfp\|SRPMS'| sed 's/\/repodata//g' | uniq)
+for path in $(find ${repo_path} -type d | grep 'x86_64\|i386\|i686\|noarch\|armhfp\|armv7hl\|SRPMS'| sed 's/\/repodata//g' | uniq)
 do
 	if [ `echo $path | grep epel-5` ];then
 		echo -e "\n\ncreaterepo -v -s $path";
@@ -26,7 +26,7 @@ done
 
 #Check the rpm numbers in each dir
 echo -e "\nCheck the rpm numbers in each dir\n"
-for path in $(find ${repo_path} -type d | sed 's/\/repodata//g'|uniq | grep 'x86_64\|i386\|SRPMS\|noarch')
+for path in $(find ${repo_path} -type d | sed 's/\/repodata//g'|uniq | grep 'x86_64\|i386\|i686\|armhfp\|armv7hl\|SRPMS\|noarch')
 do 
 	echo $path;ls -l $path | grep -v 'total\|repodata' | wc -l;
 	sleep 1;
